@@ -1,0 +1,18 @@
+const menus=[
+ {name:'얼큰한 순두부찌개',desc:'보글보글 따끈한 국물에 밥 한 공기. 오늘의 피로를 녹여줄 든든한 선택이에요.',emoji:'🍲',price:'₩ 9,000',time:'◷ 15분 내외',type:'한식',rating:'4.8',mood:'든든하게',budget:'1만원 이하',speed:'15분 이내'},
+ {name:'치킨 샐러드 랩',desc:'싱그러운 채소와 담백한 치킨을 한 손에 쏙. 오후가 가벼워져요.',emoji:'🌯',price:'₩ 8,500',time:'◷ 10분 내외',type:'샐러드',rating:'4.6',mood:'가볍게',budget:'1만원 이하',speed:'15분 이내'},
+ {name:'매콤 제육볶음',desc:'매콤달콤한 양념과 흰 밥의 완벽한 조합. 스트레스까지 싹 날려요.',emoji:'🥘',price:'₩ 10,000',time:'◷ 20분 내외',type:'한식',rating:'4.7',mood:'매콤하게',budget:'1만원 이하',speed:'천천히'},
+ {name:'탄탄멘',desc:'고소하고 진한 땅콩 육수에 쫄깃한 면. 색다른 한 그릇이 필요할 때.',emoji:'🍜',price:'₩ 12,000',time:'◷ 20분 내외',type:'면요리',rating:'4.9',mood:'새로운 것',budget:'1~2만원',speed:'천천히'},
+ {name:'연어 포케',desc:'신선한 연어와 아삭한 토핑이 가득한 알찬 한 그릇.',emoji:'🥗',price:'₩ 13,000',time:'◷ 15분 내외',type:'샐러드',rating:'4.8',mood:'가볍게',budget:'1~2만원',speed:'15분 이내'},
+ {name:'소고기 쌀국수',desc:'부드러운 고기와 향긋한 국물로 기분 좋은 리셋.',emoji:'🍛',price:'₩ 11,000',time:'◷ 15분 내외',type:'아시안',rating:'4.5',mood:'든든하게',budget:'1~2만원',speed:'15분 이내'}
+];
+let selected={mood:'전체',budget:'전체',time:'전체'}, current=menus[0], history=JSON.parse(localStorage.getItem('lunch-history')||'[]');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+$$('.chip').forEach(btn=>btn.addEventListener('click',()=>{const g=btn.dataset.group;selected[g]=btn.dataset.value;$$(`[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}));
+function filtered(){return menus.filter(m=>(selected.mood==='전체'||m.mood===selected.mood)&&(selected.budget==='전체'||m.budget===selected.budget)&&(selected.time==='전체'||m.speed===selected.time))}
+function show(m){current=m;$('#resultMood').textContent=m.mood==='전체'?'든든한':m.mood.replace('하게','한').replace('새로운 것','새로운');$('#resultName').textContent=m.name;$('#resultDesc').textContent=m.desc;$('#resultPrice').textContent=m.price;$('#resultTime').textContent=m.time;$('#resultType').textContent=m.type;$('#resultRating').textContent=m.rating;$('.food-emoji').textContent=m.emoji;$('.save-btn').classList.remove('saved');$('.save-btn span').textContent='메뉴 저장하기'}
+function recommend(){const list=filtered();show(list[Math.floor(Math.random()*list.length)]||menus[0]);$('#result').scrollIntoView({behavior:'smooth',block:'start'})}
+function renderCards(){ $('#menuGrid').innerHTML=menus.slice(1,4).map((m,i)=>`<article class="menu-card" data-index="${menus.indexOf(m)}"><div class="card-art">${m.emoji}</div><div class="card-copy"><h3>${m.name}</h3><p>${m.desc.slice(0,28)}...</p><div class="card-meta"><span>${m.price}</span><span>★ ${m.rating}</span></div></div></article>`).join('');$$('.menu-card').forEach(c=>c.onclick=()=>show(menus[c.dataset.index]))}
+function renderHistory(){const el=$('#historyList');el.innerHTML=history.length?history.map(h=>`<div class="history-item"><span>${h.emoji}</span><b>${h.name}</b><small>${h.date}</small></div>`).join(''):'<p class="empty">아직 고른 메뉴가 없어요. 오늘의 메뉴를 뽑아보세요!</p>'}
+$('#recommendBtn').onclick=recommend;$('#refreshBtn').onclick=recommend;$('#saveBtn').onclick=()=>{if(!history.some(h=>h.name===current.name)){history.unshift({...current,date:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})});history=history.slice(0,4);localStorage.setItem('lunch-history',JSON.stringify(history));renderHistory()}$('#saveBtn').classList.add('saved');$('.save-btn span').textContent='저장했어요'};$('#clearBtn').onclick=()=>{history=[];localStorage.removeItem('lunch-history');renderHistory()};$('#themeBtn').onclick=()=>document.body.classList.toggle('dark');
+renderCards();renderHistory();show(current);

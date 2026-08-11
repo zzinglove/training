@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>점심고민 | 오늘의 메뉴를 골라드려요</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gowun+Dodum&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="점심고민 홈"><span class="brand-mark">ㅈ</span><span>점심고민</span></a>
+    <nav class="nav"><a class="active" href="#recommend">오늘의 추천</a><a href="#menus">메뉴 둘러보기</a><a href="#recent">최근 선택</a></nav>
+    <button class="icon-btn" id="themeBtn" aria-label="테마 전환">☼</button>
+  </header>
+
+  <main id="top">
+    <section class="hero section-wrap" id="recommend">
+      <div class="hero-copy"><p class="eyebrow">WEDNESDAY · AUG 11, 2026</p><h1>오늘 점심,<br><em>제가 골라드릴게요.</em></h1><p class="hero-text">바쁜 오전은 여기까지. 지금 기분과 상황에 딱 맞는<br class="desktop" /> 메뉴를 찾아 오후를 가볍게 시작해보세요.</p></div>
+      <div class="hero-doodle" aria-hidden="true"><span class="sun">✦</span><span class="steam s1"></span><span class="steam s2"></span><span class="bowl">⌒</span><span class="doodle-caption">한 끼의<br>작은 발견</span></div>
+    </section>
+
+    <section class="picker section-wrap">
+      <div class="picker-head"><div><p class="eyebrow">QUICK PICK</p><h2>어떤 점심을 원하세요?</h2></div><span class="step">01 <i>/</i> 03</span></div>
+      <div class="filter-group"><label>지금 기분은</label><div class="chips mood-chips"><button class="chip selected" data-group="mood" data-value="전체">전체</button><button class="chip" data-group="mood" data-value="든든하게">든든하게</button><button class="chip" data-group="mood" data-value="가볍게">가볍게</button><button class="chip" data-group="mood" data-value="매콤하게">매콤하게</button><button class="chip" data-group="mood" data-value="새로운 것">새로운 것</button></div></div>
+      <div class="filter-row"><div class="filter-group"><label>예산</label><div class="chips budget-chips"><button class="chip selected" data-group="budget" data-value="전체">전체</button><button class="chip" data-group="budget" data-value="1만원 이하">₩ 1만원 이하</button><button class="chip" data-group="budget" data-value="1~2만원">₩ 1~2만원</button></div></div><div class="filter-group"><label>식사 시간</label><div class="chips time-chips"><button class="chip selected" data-group="time" data-value="전체">전체</button><button class="chip" data-group="time" data-value="15분 이내">15분 이내</button><button class="chip" data-group="time" data-value="천천히">천천히</button></div></div></div>
+      <button class="recommend-btn" id="recommendBtn"><span>오늘의 메뉴 추천받기</span><b>↗</b></button>
+    </section>
+
+    <section class="result section-wrap" id="result" aria-live="polite"><div class="result-top"><div><p class="eyebrow">YOUR LUNCH MATCH</p><h2>오늘은 <span id="resultMood">든든한</span> 한 끼 어때요?</h2></div><button class="refresh" id="refreshBtn">↻ 다시 뽑기</button></div><div class="featured-card" id="featuredCard"><div class="food-visual" id="foodVisual"><span class="food-emoji">🍲</span><span class="visual-tag">TODAY'S PICK</span></div><div class="featured-info"><div class="rating">★ <span id="resultRating">4.8</span> <small>(124)</small></div><h3 id="resultName">얼큰한 순두부찌개</h3><p id="resultDesc">보글보글 따끈한 국물에 밥 한 공기. 오늘의 피로를 녹여줄 든든한 선택이에요.</p><div class="meta"><span id="resultPrice">₩ 9,000</span><span id="resultTime">◷ 15분 내외</span><span id="resultType">한식</span></div><button class="save-btn" id="saveBtn">♡ <span>메뉴 저장하기</span></button></div></div></section>
+
+    <section class="browse section-wrap" id="menus"><div class="section-heading"><div><p class="eyebrow">EXPLORE MENUS</p><h2>오늘의 다른 후보들</h2></div><a href="#menus" id="showAll">전체 보기 <span>→</span></a></div><div class="menu-grid" id="menuGrid"></div></section>
+    <section class="recent section-wrap" id="recent"><div class="section-heading"><div><p class="eyebrow">YOUR HISTORY</p><h2>최근에 골랐던 메뉴</h2></div><button class="clear-btn" id="clearBtn">기록 지우기</button></div><div class="history-list" id="historyList"><p class="empty">아직 고른 메뉴가 없어요. 오늘의 메뉴를 뽑아보세요!</p></div></section>
+  </main>
+  <footer><div class="section-wrap footer-inner"><span class="brand"><span class="brand-mark">ㅈ</span> 점심고민</span><span>매일의 점심을 조금 더 즐겁게.</span><span class="mono">© 2026 LUNCHGOMIN</span></div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
