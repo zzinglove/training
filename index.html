@@ -32,10 +32,15 @@
 
     <section class="result section-wrap" id="result" aria-live="polite"><div class="result-top"><div><p class="eyebrow">YOUR LUNCH MATCH</p><h2>오늘은 <span id="resultMood">든든한</span> 한 끼 어때요?</h2></div><button class="refresh" id="refreshBtn">↻ 다시 뽑기</button></div><div class="featured-card" id="featuredCard"><div class="food-visual" id="foodVisual"><span class="food-emoji">🍲</span><span class="visual-tag">TODAY'S PICK</span></div><div class="featured-info"><div class="rating">★ <span id="resultRating">4.8</span> <small>(124)</small></div><h3 id="resultName">얼큰한 순두부찌개</h3><p id="resultDesc">보글보글 따끈한 국물에 밥 한 공기. 오늘의 피로를 녹여줄 든든한 선택이에요.</p><div class="meta"><span id="resultPrice">₩ 9,000</span><span id="resultTime">◷ 15분 내외</span><span id="resultType">한식</span></div><button class="save-btn" id="saveBtn">♡ <span>메뉴 저장하기</span></button></div></div></section>
 
-    <section class="browse section-wrap" id="menus"><div class="section-heading"><div><p class="eyebrow">EXPLORE MENUS</p><h2>오늘의 다른 후보들</h2></div><a href="#menus" id="showAll">전체 보기 <span>→</span></a></div><div class="menu-grid" id="menuGrid"></div></section>
+    <section class="browse section-wrap" id="menus"><div class="section-heading"><div><p class="eyebrow">EXPLORE MENUS</p><h2>오늘의 메뉴 <span class="menu-count" id="menuCount"></span></h2></div></div><div class="category-tabs" id="categoryTabs"></div><div class="menu-grid" id="menuGrid"></div></section>
     <section class="recent section-wrap" id="recent"><div class="section-heading"><div><p class="eyebrow">YOUR HISTORY</p><h2>최근에 골랐던 메뉴</h2></div><button class="clear-btn" id="clearBtn">기록 지우기</button></div><div class="history-list" id="historyList"><p class="empty">아직 고른 메뉴가 없어요. 오늘의 메뉴를 뽑아보세요!</p></div></section>
   </main>
   <footer><div class="section-wrap footer-inner"><span class="brand"><span class="brand-mark">ㅈ</span> 점심고민</span><span>매일의 점심을 조금 더 즐겁게.</span><span class="mono">© 2026 LUNCHGOMIN</span></div></footer>
+  <style>
+    .menu-count{font:400 12px 'DM Mono';color:var(--muted);margin-left:7px}.category-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.category-tab{border:1px solid var(--line);background:transparent;border-radius:20px;padding:8px 14px;color:var(--muted);font-size:12px}.category-tab.active,.category-tab:hover{background:var(--ink);border-color:var(--ink);color:#fff}.pick-btn{width:100%;margin-top:14px;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:2px;padding:9px 8px;font-size:12px}.pick-btn:hover,.pick-btn.picked{background:var(--accent);color:#fff}.card-copy p{min-height:32px}.category-label{font:10px 'DM Mono';color:var(--muted);text-transform:uppercase}.history-item em{font-size:11px;color:var(--green);font-style:normal}
+    @media(max-width:700px){.category-tabs{gap:6px}.category-tab{padding:7px 11px}.pick-btn{font-size:11px;padding:8px 4px}.menu-grid{gap:10px}}
+  </style>
+  <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
