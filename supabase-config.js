@@ -1,6 +1,4 @@
-// Vercel 배포 시 이 값을 본인의 Supabase 프로젝트 값으로 교체하세요.
-// Supabase Dashboard > Project Settings > API에서 확인할 수 있습니다.
 window.SUPABASE_CONFIG = {
-  url: "https://YOUR_PROJECT.supabase.co",
-  anonKey: "YOUR_SUPABASE_ANON_KEY"
+  url: "https://uuplsaweijyhmrpynhxa.supabase.co",
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1cGxzYXdlaWp5aG1ycHluaHhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY0MTg5ODksImV4cCI6MjEwMTk5NDk4OX0.kzSgYouMGiIrchZQN8ZJpcz1PZo2xL5t9jVze-ArJ0o"
 };
